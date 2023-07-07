@@ -6,6 +6,7 @@ import bstorm.bibliothequeapi.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,6 +24,11 @@ public class BookServiceImpl implements BookService{
             throw new NotFoundException("Le livre que vous cherchez n'existe pas.");
         }
         return book.get();
+    }
+
+    @Override
+    public List<Book> getAll(){
+        return bookRepository.findAll();
     }
 
     @Override

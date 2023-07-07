@@ -10,6 +10,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/book")
@@ -32,6 +34,12 @@ public class BookController {
     public ResponseEntity<String> insert(@Valid @RequestBody BookForm b){
         bookService.insert(b);
         return ResponseEntity.ok("Livre ajouté");
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Book>> getAll(){
+        List<Book> books = bookService.getAll();
+        return ResponseEntity.ok(books);
     }
 
 }
